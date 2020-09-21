@@ -56,14 +56,14 @@ public class CPUInstanceAllocator {
             }
         } else if (price <= 0) {
             for (DataCenter dataCenter : dataCenters) {
-				JSONObject result = dataCenter.getCost(hours, price);
+				JSONObject result = dataCenter.getCost(hours, cpus);
 				float totalCost = result.getFloat(ResponseConstants.total_cost_unformatted.toString());
 				result.remove(ResponseConstants.total_cost_unformatted.toString());
 				sortedMap.put(totalCost, result);
 			}
         } else {
             for (DataCenter dataCenter : dataCenters) {
-				JSONObject result = dataCenter.getCost(hours, price);
+				JSONObject result = dataCenter.getCost(hours, cpus, price);
 				float totalCost = result.getFloat(ResponseConstants.total_cost_unformatted.toString());
 				result.remove(ResponseConstants.total_cost_unformatted.toString());
 				sortedMap.put(totalCost, result);
